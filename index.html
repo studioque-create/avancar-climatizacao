@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avançar Climatização – Instalação e Manutenção Profissional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0B1F3A;
+  --navy-mid: #122848;
+  --blue: #1A6FC4;
+  --cyan: #3FB8E0;
+  --orange: #F07820;
+  --orange-light: #F5A03A;
+  --white: #FFFFFF;
+  --off-white: #F4F7FB;
+  --gray-100: #E8EDF5;
+  --gray-300: #BBC4D4;
+  --gray-500: #6B7A94;
+  --radius: 4px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--navy);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(11,31,58,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  height: 72px;
+}
+
+.nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo img { height: 44px; width: auto; display: block; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 36px; list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.65); text-decoration: none;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.2px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--orange) !important;
+  color: var(--white) !important;
+  padding: 10px 22px !important;
+  border-radius: var(--radius);
+  font-weight: 600 !important;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--orange-light) !important; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 85% 50%, rgba(26,111,196,0.17) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 35% at 12% 78%, rgba(240,120,32,0.07) 0%, transparent 55%),
+    linear-gradient(140deg, #09192E 0%, #0F2845 55%, #122848 100%);
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1280px; margin: 0 auto;
+  padding: 120px 48px 80px;
+  width: 100%;
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  gap: 72px; align-items: center;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(63,184,224,0.09);
+  border: 1px solid rgba(63,184,224,0.25);
+  color: var(--cyan);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 7px 14px; border-radius: var(--radius);
+  margin-bottom: 28px;
+}
+
+.hero-tag::before {
+  content: "";
+  width: 5px; height: 5px;
+  background: var(--cyan); border-radius: 50%;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity:1; } 50% { opacity:0.25; }
+}
+
+.hero-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(60px, 7vw, 96px);
+  color: var(--white);
+  line-height: 0.9;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.hero-title .accent { color: var(--orange); display: block; }
+.hero-title .line2  { color: var(--cyan);   display: block; }
+.hero-title .line1  { display: block; }
+
+.hero-sub {
+  font-size: 16px; color: rgba(255,255,255,0.5);
+  line-height: 1.75; margin: 26px 0 42px;
+  max-width: 460px; font-weight: 300;
+}
+
+.hero-actions { display: flex; gap: 16px; align-items: center; }
+
+.btn-primary {
+  background: var(--orange); color: var(--white);
+  padding: 14px 30px; border-radius: var(--radius);
+  font-size: 14px; font-weight: 600;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s; letter-spacing: 0.2px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+.btn-ghost {
+  color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: color 0.2s;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.btn-ghost:hover { color: var(--white); }
+.btn-ghost svg { transition: transform 0.2s; }
+.btn-ghost:hover svg { transform: translateX(3px); }
+
+/* stat cards */
+.stat-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px; padding: 26px;
+  transition: border-color 0.3s;
+}
+
+.stat-card:hover { border-color: rgba(63,184,224,0.25); }
+
+.stat-card .num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 56px; color: var(--white); line-height: 1;
+  letter-spacing: 1px;
+}
+
+.stat-card .num .unit { font-size: 28px; color: var(--orange); }
+
+.stat-card .label {
+  font-size: 12px; color: rgba(255,255,255,0.4);
+  margin-top: 8px; line-height: 1.5; font-weight: 400;
+}
+
+.stat-card.wide {
+  grid-column: span 2;
+  background: rgba(240,120,32,0.08);
+  border-color: rgba(240,120,32,0.2);
+  display: flex; align-items: center; gap: 18px; padding: 20px 24px;
+}
+
+.stat-card.wide .icon {
+  width: 44px; height: 44px;
+  background: var(--orange); border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+
+.stat-card.wide .text { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+.stat-card.wide .text strong { color: var(--white); display: block; font-size: 14px; margin-bottom: 3px; font-weight: 600; }
+
+/* ─── STRIP ─── */
+.clients-strip {
+  background: var(--gray-100);
+  border-top: 1px solid var(--gray-300);
+  border-bottom: 1px solid var(--gray-300);
+  padding: 16px 0;
+}
+
+.clients-strip-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 48px;
+  display: flex; align-items: center; gap: 28px;
+}
+
+.clients-strip .label {
+  font-size: 11px; font-weight: 600;
+  color: var(--gray-500); letter-spacing: 2px;
+  text-transform: uppercase; white-space: nowrap;
+}
+
+.strip-div { width: 1px; height: 20px; background: var(--gray-300); flex-shrink: 0; }
+
+.client-logos { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+
+.client-logos span {
+  font-size: 13px; font-weight: 600;
+  color: var(--gray-500); opacity: 0.75;
+}
+
+/* ─── SECTIONS ─── */
+.section { padding: 100px 0; }
+
+.section-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 48px;
+}
+
+.section-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 600;
+  color: var(--blue); letter-spacing: 2.5px; text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.section-label::before { content: ""; width: 24px; height: 2px; background: var(--blue); }
+
+.section-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(40px, 5vw, 64px);
+  color: var(--navy); line-height: 0.92;
+  letter-spacing: 1px;
+}
+
+.section-title .accent { color: var(--orange); }
+
+.section-desc {
+  font-size: 16px; color: var(--gray-500);
+  line-height: 1.75; margin-top: 18px; max-width: 520px; font-weight: 300;
+}
+
+/* ─── SERVICES ─── */
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 52px;
+  background: var(--gray-300);
+  border: 2px solid var(--gray-300);
+  border-radius: 8px; overflow: hidden;
+}
+
+.service-card {
+  background: var(--white); padding: 40px 32px;
+  position: relative; transition: background 0.25s;
+}
+
+.service-card::before {
+  content: ""; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: transparent; transition: background 0.25s;
+}
+
+.service-card:hover { background: var(--off-white); }
+.service-card:hover::before { background: var(--orange); }
+
+.service-icon {
+  width: 48px; height: 48px;
+  background: var(--off-white); border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px; transition: background 0.25s;
+}
+
+.service-card:hover .service-icon { background: rgba(240,120,32,0.08); }
+
+.service-card h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px; color: var(--navy); margin-bottom: 12px;
+  line-height: 1; letter-spacing: 0.5px;
+}
+
+.service-card p { font-size: 13px; color: var(--gray-500); line-height: 1.65; font-weight: 300; }
+
+/* ─── PMOC ─── */
+.pmoc-section {
+  background: var(--navy); padding: 100px 0;
+  position: relative; overflow: hidden;
+}
+
+.pmoc-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #09192E 0%, var(--navy-mid) 100%);
+}
+
+.pmoc-bg::after {
+  content: ""; position: absolute; right: -80px; top: -80px;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(26,111,196,0.12) 0%, transparent 70%);
+}
+
+.pmoc-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 48px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+  position: relative; z-index: 2;
+}
+
+.pmoc-inner .section-label { color: var(--cyan); }
+.pmoc-inner .section-label::before { background: var(--cyan); }
+.pmoc-inner .section-title { color: var(--white); }
+.pmoc-inner .section-desc { color: rgba(255,255,255,0.45); }
+
+.pmoc-steps { display: flex; flex-direction: column; }
+
+.pmoc-step {
+  display: flex; gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.pmoc-step:last-child { border-bottom: none; }
+
+.step-num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 14px; color: var(--orange);
+  width: 28px; flex-shrink: 0; padding-top: 1px; letter-spacing: 1px;
+}
+
+.step-content h4 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.step-content p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; font-weight: 300; }
+
+/* ─── DIFF ─── */
+.diff-section { background: var(--off-white); }
+
+.diff-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 52px; }
+
+.diff-card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: 8px; padding: 30px 24px;
+  transition: all 0.25s;
+}
+
+.diff-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(26,111,196,0.1);
+}
+
+.diff-card .d-icon {
+  width: 40px; height: 40px;
+  background: rgba(26,111,196,0.07);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+
+.diff-card h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px; color: var(--navy); margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.diff-card p { font-size: 13px; color: var(--gray-500); line-height: 1.65; font-weight: 300; }
+
+/* ─── SETORES ─── */
+.setores-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-top: 52px; }
+
+.setor-item {
+  background: var(--off-white); border: 1px solid var(--gray-100);
+  border-radius: 8px; padding: 26px 16px; text-align: center;
+  transition: all 0.2s;
+}
+
+.setor-item:hover { background: var(--navy); border-color: var(--navy); }
+.setor-item:hover .setor-label { color: var(--white); }
+.setor-item:hover .setor-icon-wrap { background: rgba(255,255,255,0.09); }
+
+.setor-icon-wrap {
+  width: 44px; height: 44px; background: var(--gray-100);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 12px; transition: background 0.2s;
+}
+
+.setor-label { font-size: 12px; font-weight: 600; color: var(--navy); line-height: 1.4; transition: color 0.2s; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: var(--navy); padding: 100px 0;
+  text-align: center; position: relative; overflow: hidden;
+}
+
+.cta-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 50% 100%, rgba(240,120,32,0.1) 0%, transparent 60%), var(--navy);
+}
+
+.cta-inner {
+  position: relative; z-index: 2;
+  max-width: 640px; margin: 0 auto; padding: 0 48px;
+}
+
+.cta-inner .section-title { color: var(--white); margin-bottom: 16px; }
+.cta-desc { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 40px; font-weight: 300; }
+
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.btn-whatsapp {
+  background: #22C55E; color: var(--white);
+  padding: 16px 32px; border-radius: var(--radius);
+  font-size: 15px; font-weight: 600;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.2s; font-family: "Space Grotesk", sans-serif;
+}
+
+.btn-whatsapp:hover { background: #16A34A; transform: translateY(-2px); }
+
+.btn-outline {
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.65);
+  padding: 16px 32px; border-radius: var(--radius);
+  font-size: 15px; font-weight: 400;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s; font-family: "Space Grotesk", sans-serif;
+}
+
+.btn-outline:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+/* ─── FOOTER ─── */
+footer { background: #060F1D; padding: 56px 0 32px; }
+
+.footer-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 48px;
+}
+
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-logo { height: 36px; width: auto; margin-bottom: 18px; display: block; }
+
+.footer-desc { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.7; max-width: 290px; font-weight: 300; }
+
+.footer-col h4 {
+  font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.55); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 13px; transition: color 0.2s; font-weight: 300; }
+.footer-col ul a:hover { color: rgba(255,255,255,0.65); }
+
+.footer-bottom {
+  padding-top: 28px; display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px; color: rgba(255,255,255,0.22);
+}
+
+@media (max-width: 1024px) {
+  .hero-inner, .pmoc-inner { grid-template-columns: 1fr; gap: 48px; padding: 100px 32px 64px; }
+  .section-inner { padding: 0 32px; }
+  .nav-inner { padding: 0 32px; }
+  .clients-strip-inner { padding: 0 32px; }
+  .footer-inner { padding: 0 32px; }
+  .cta-inner { padding: 0 32px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .diff-grid { grid-template-columns: 1fr 1fr; }
+  .setores-grid { grid-template-columns: repeat(3,1fr); }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  nav .nav-links li:not(:last-child) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="data:image/png;base64,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" alt="Avançar Climatização">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#pmoc">PMOC</a></li>
+      <li><a href="#diferenciais">Diferenciais</a></li>
+      <li><a href="#setores">Setores</a></li>
+      <li><a href="#contato" class="nav-cta">Solicitar Orçamento</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">Climatização Corporativa · Goiânia</div>
+      <h1 class="hero-title">
+        <span class="line1">CLIMATIZAÇÃO</span>
+        <span class="accent">QUE NÃO</span>
+        <span class="line2">PARA.</span>
+      </h1>
+      <p class="hero-sub">
+        Instalação e manutenção profissional de ar-condicionado para empresas, supermercados e contratos corporativos em Goiás. Técnica qualificada, pontualidade garantida.
+      </p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg>
+          Solicitar Orçamento
+        </a>
+        <a href="#servicos" class="btn-ghost">
+          Ver serviços
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="num">8<span class="unit">+</span></div>
+          <div class="label">Anos de experiência técnica no segmento</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">100<span class="unit">%</span></div>
+          <div class="label">Supervisão direta do proprietário em cada serviço</div>
+        </div>
+        <div class="stat-card wide">
+          <div class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="text">
+            <strong>Contratos PMOC para empresas</strong>
+            Manutenção preventiva com relatórios e laudos técnicos inclusos
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="clients-strip">
+  <div class="clients-strip-inner">
+    <span class="label">Setores atendidos</span>
+    <div class="strip-div"></div>
+    <div class="client-logos">
+      <span>Supermercados</span>
+      <span>Escritórios</span>
+      <span>Clínicas</span>
+      <span>Indústrias</span>
+      <span>Lojas & Varejo</span>
+      <span>Condomínios</span>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="servicos">
+  <div class="section-inner">
+    <div class="section-label">O que fazemos</div>
+    <h2 class="section-title">SERVIÇOS <span class="accent">TÉCNICOS</span><br>ESPECIALIZADOS</h2>
+    <p class="section-desc">Soluções completas em climatização para o mercado corporativo, com execução de excelência e suporte contínuo.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#1A6FC4" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="#1A6FC4" stroke-width="1.8" stroke-linecap="round"/><path d="M7 10h10M7 7h4" stroke="#F07820" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Instalação de Ar-Condicionado</h3>
+        <p>Instalação de splits, multi-splits e sistemas VRF com infraestrutura completa, projeto técnico e garantia de serviço.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="#1A6FC4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Manutenção Preventiva</h3>
+        <p>Limpeza, higienização, verificação de gás refrigerante e revisão de componentes elétricos. Equipamentos sempre em ponto ideal.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#F07820" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Manutenção Corretiva</h3>
+        <p>Diagnóstico técnico preciso e reparo ágil de falhas. Atendimento de emergência para minimizar paralisações na operação.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#1A6FC4" stroke-width="1.8" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="#1A6FC4" stroke-width="1.8" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="#F07820" stroke-width="1.8" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="#F07820" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Laudos e Relatórios Técnicos</h3>
+        <p>Emissão de relatórios PMOC com assinatura do responsável técnico, adequados às exigências da ANVISA e normas vigentes.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#1A6FC4" stroke-width="1.8" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="#F07820" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Higienização Profissional</h3>
+        <p>Limpeza completa de evaporadoras, condensadoras e dutos com produtos certificados. Qualidade do ar garantida.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#1A6FC4" stroke-width="1.8"/><polyline points="12 6 12 12 16 14" stroke="#F07820" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Contratos de Manutenção</h3>
+        <p>Contratos recorrentes com visitas periódicas programadas, prioridade no atendimento e previsibilidade de custos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pmoc-section" id="pmoc">
+  <div class="pmoc-bg"></div>
+  <div class="pmoc-inner">
+    <div>
+      <div class="section-label">Conformidade Legal</div>
+      <h2 class="section-title">PMOC:<br><span style="color:var(--orange)">PROTEÇÃO</span><br>PARA SUA EMPRESA</h2>
+      <p class="section-desc" style="margin-top:18px">O Plano de Manutenção, Operação e Controle é obrigatório por lei para edificações com mais de 60m² de área climatizada. Conformidade evita multas, autuações sanitárias e passivos trabalhistas.</p>
+      <a href="#contato" class="btn-primary" style="margin-top:34px;display:inline-flex">
+        Quero um contrato PMOC
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="pmoc-steps">
+      <div class="pmoc-step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h4>Vistoria e Diagnóstico Inicial</h4>
+          <p>Levantamento de todos os equipamentos, capacidades instaladas e estado atual dos sistemas.</p>
+        </div>
+      </div>
+      <div class="pmoc-step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h4>Elaboração do Plano Técnico</h4>
+          <p>Cronograma de manutenções preventivas com frequência adequada a cada equipamento.</p>
+        </div>
+      </div>
+      <div class="pmoc-step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h4>Execução com Rastreabilidade</h4>
+          <p>Cada visita gera relatório técnico detalhado com os procedimentos realizados.</p>
+        </div>
+      </div>
+      <div class="pmoc-step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h4>Laudo Anual com ART</h4>
+          <p>Documentação com Anotação de Responsabilidade Técnica para conformidade legal total.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section diff-section" id="diferenciais">
+  <div class="section-inner">
+    <div class="section-label">Por que nos escolher</div>
+    <h2 class="section-title">NOSSA <span class="accent">DIFERENÇA</span><br>É TÉCNICA</h2>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="d-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#1A6FC4" stroke-width="1.8"/><polyline points="12 6 12 12 16 14" stroke="#1A6FC4" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Pontualidade Real</h3>
+        <p>Cumprimos horários. Sem "chegar quando der". Agendamentos respeitados com comunicação antecipada.</p>
+      </div>
+      <div class="diff-card">
+        <div class="d-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#1A6FC4" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#1A6FC4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Supervisão Direta</h3>
+        <p>O proprietário acompanha ou valida cada serviço pessoalmente. Sem terceirização descontrolada.</p>
+      </div>
+      <div class="diff-card">
+        <div class="d-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="#1A6FC4" stroke-width="1.8" stroke-linecap="round"/><polyline points="22 4 12 14.01 9 11.01" stroke="#1A6FC4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Execução Técnica</h3>
+        <p>Profissionais qualificados com experiência comprovada. Não trabalhamos com mão de obra sem formação.</p>
+      </div>
+      <div class="diff-card">
+        <div class="d-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#1A6FC4" stroke-width="1.8" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="#1A6FC4" stroke-width="1.8" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="#1A6FC4" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Atendimento B2B</h3>
+        <p>Nota fiscal, contratos formais e relatórios. Estrutura corporativa completa para a sua empresa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="setores">
+  <div class="section-inner">
+    <div class="section-label">Mercados</div>
+    <h2 class="section-title">SETORES <span class="accent">ATENDIDOS</span></h2>
+    <p class="section-desc">Experiência em ambientes com alta demanda técnica e exigência operacional contínua.</p>
+    <div class="setores-grid">
+      <div class="setor-item">
+        <div class="setor-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="#1A6FC4" stroke-width="1.8" stroke-linejoin="round"/><line x1="3" y1="6" x2="21" y2="6" stroke="#1A6FC4" stroke-width="1.8"/><path d="M16 10a4 4 0 01-8 0" stroke="#F07820" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="setor-label">Supermercados</div>
+      </div>
+      <div class="setor-item">
+        <div class="setor-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#1A6FC4" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="#1A6FC4" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="setor-label">Escritórios</div>
+      </div>
+      <div class="setor-item">
+        <div class="setor-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="#1A6FC4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="setor-label">Clínicas e Consultórios</div>
+      </div>
+      <div class="setor-item">
+        <div class="setor-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#1A6FC4" stroke-width="1.8"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke="#1A6FC4" stroke-width="1.8" stroke-linejoin="round"/><line x1="12" y1="12" x2="12" y2="16" stroke="#F07820" stroke-width="1.8" stroke-linecap="round"/><line x1="10" y1="14" x2="14" y2="14" stroke="#F07820" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="setor-label">Indústrias</div>
+      </div>
+      <div class="setor-item">
+        <div class="setor-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#1A6FC4" stroke-width="1.8" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="#F07820" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div class="setor-label">Condomínios</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contato">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <div class="section-label" style="color:var(--cyan);justify-content:center;margin-bottom:18px">
+      <span style="width:24px;height:2px;background:var(--cyan);display:inline-block;margin-right:0;vertical-align:middle"></span>
+      Fale com a equipe
+    </div>
+    <h2 class="section-title">PRONTO PARA<br><span style="color:var(--orange)">AVANÇAR?</span></h2>
+    <p class="cta-desc" style="margin-top:18px">Solicite um orçamento sem compromisso. Atendemos contratos corporativos em Goiânia e região. Retorno em até 2 horas em dias úteis.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/556299999999" class="btn-whatsapp" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Agora
+      </a>
+      <a href="mailto:contato@avancarclima.com.br" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Enviar E-mail
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <img src="data:image/png;base64,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" alt="Avançar Climatização" class="footer-logo">
+        <p class="footer-desc">Instalação e manutenção profissional de ar-condicionado para o mercado corporativo em Goiânia e região.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#">Instalação</a></li>
+          <li><a href="#">Manutenção Preventiva</a></li>
+          <li><a href="#">Manutenção Corretiva</a></li>
+          <li><a href="#">PMOC</a></li>
+          <li><a href="#">Higienização</a></li>
+          <li><a href="#">Contratos Corporativos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#">Goiânia – GO</a></li>
+          <li><a href="#">contato@avancarclima.com.br</a></li>
+          <li><a href="#">(62) 9 9999-9999</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Avançar Climatização. Todos os direitos reservados.</span>
+      <span>Goiânia, GO</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const cards = document.querySelectorAll(".service-card, .diff-card, .setor-item, .stat-card");
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = "1";
+        e.target.style.transform = "translateY(0)";
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach((c, i) => {
+    c.style.opacity = "0";
+    c.style.transform = "translateY(16px)";
+    c.style.transition = `opacity 0.45s ease ${i * 0.06}s, transform 0.45s ease ${i * 0.06}s, border-color 0.25s, background 0.25s, box-shadow 0.25s`;
+    obs.observe(c);
+  });
+</script>
+</body>
+</html>
